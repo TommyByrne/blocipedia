@@ -11,7 +11,7 @@ end
 group :development do
   gem 'sqlite3'
   gem 'spring'
-  gem 'better_errors'
+  gem 'better_errors', '~> 2.1.1'
   gem 'binding_of_caller'
   gem 'thin'
 end

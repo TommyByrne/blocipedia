@@ -1,22 +1,52 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/*
-A custom Bootstrap 3.1 template
-from http://bootply.com
-
-This CSS code should follow the 'bootstrap.css'
-in your HTML file.
-
-license: MIT
-author: bootply.com
-*/
-html,
-body{ height: 100%;}
-
-body{
-  display: table;
+// Welcome Index //
+.section1{
+  text-align: center;
+  min-height: 600px;
+  background-color: #52B3D9;
   width: 100%;
+  padding: 30px;
+  margin-top: -25px;
+}
+
+.circle{
+  border-radius:600px;
+  width: 170px;
+  padding: 50px;
+  font-size:20px;
+  color:#fff;
+  line-height:120px;
+  text-align:center;
+  background:#000;
+  margin: 20px;
+}
+
+.section2{
+  padding-top: 30px;
+  text-align: center;
+  min-height: 700px;
+  background-color: #2ECC71;
+  width: 100%;
+  margin-top: 100;
+}
+.section2 h1{
+  font-size: 48pt;
+  padding-bottom: 20px;
+}
+.btn-intro{
+  margin: 25px;
+  padding: 15px 30px;
+  background: none;
+  border: 5px solid #0099cc;
+  color: #0099cc;
+  font-size: 18pt;
+}
+.btn-intro:hover{
+
+  background: none;
+  border: 6px solid;
 }
 
 .user-info {
@@ -27,26 +57,6 @@ body{
   margin-top: 5px;
 }
 
-//SECTION 1//
 .section1{
   text-align: center;
-}
-
-footer {
-
-  background-color:#494949;
-    color:#ddd;
-    min-height:100px;
-    padding-top:20px;
-    padding-bottom:40px;
-}
-
-footer .nav>li>a {
-    padding:3px;
-    color:#ccc;
-}
-
-footer .nav>li>a:hover {
-    background-color:transparent;
-  color:#fff;
 }
