@@ -1,10 +1,13 @@
 class User < ActiveRecord::Base
-  has_many :wikis
-  after_initialize :init
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  validates_presence_of :name, :email
+  validates :email, format: /\b[a-zA-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
+
+  has_many :wikis
+  after_initialize :init
   def admin?
     role == 'admin'
   end

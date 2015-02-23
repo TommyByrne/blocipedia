@@ -1,6 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Devise //
+.center h2{
+  text-align: center;
+}
+.center{
+  padding: 30px;
+  background-color: #52B3D9;
+  height: 500px;
+  margin: 30px;
+}
 // Welcome Index //
 .section1{
   text-align: center;
@@ -49,6 +59,12 @@
   border: 6px solid;
 }
 
+//navbar//
+
+.upgrade:hover{
+  background-color: #F64747;
+  color: white;
+}
 .user-info {
   margin-top: 9px;
 }
