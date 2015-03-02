@@ -1,10 +1,16 @@
-<%= simple_form_for @wiki do |f| %>
-  <div class="form-inputs">
+<div class="col-md-6 col-md-offset-3">
+  <%= simple_form_for @wiki do |f| %>
+    <div class="form-inputs">
       <%= f.input :title, label: "Title", required: true, autofocus: true %>
       <%= f.input :body, label: "Wiki Body", required: true %>
-      <%= render 'wikis/form' %>
-  </div>
+        <% if current_user.role == 'admin' || current_user.role == 'premium' %>
+          <%= f.label :private, class: 'checkbox' do %>
+          <%= f.check_box :private %> Private wiki
+        <% end %>
+    </div>
+  <% end %>
     <div class="form-actions">
-    <%= f.button :submit, "Publish Wiki", class: 'btn btn-success' %>
-  </div>
-<% end %>
+      <%= f.button :submit, "Publish Wiki", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
