@@ -9,21 +9,21 @@ class ChargesController < ApplicationController
   end
 
   def create
-    # Creates a Stripe Customer object, for associating with the charge
+    @amount = 10_00
+
     customer = Stripe::Customer.create(
       email: current_user.email,
       card: params[:stripeToken]
       )
 
-    # Where the real magic happens
     charge = Stripe::Charge.create(
       customer: customer.id, # Note -- this is NOT the user_id in your app)
-      amount: 10_00,
+      amount: @amount,
       description: "Premium Blocipedia Membership - #{current_user.email}",
       currency: 'usd'
       )
 
-    current_user.update_attribute(:role, 'premium')
+    current_user.update_attributes!( role: 'premium')
 
     flash[:success] = "Payment was successful, membership upgraded to Premium for  #{current_user.email}!"
     redirect_to root_path # or whereever

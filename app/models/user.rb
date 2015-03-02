@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :wikis
   after_initialize :init
+
   def admin?
     role == 'admin'
   end
@@ -19,6 +20,7 @@ class User < ActiveRecord::Base
   def premium?
     role == 'premium'
   end
+
   def init
     self.role ||= 'standard'
   end

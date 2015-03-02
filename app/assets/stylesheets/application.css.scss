@@ -1,4 +1,4 @@
-@import "bootstrap-sprockets";
+ @import "bootstrap-sprockets";
 @import "bootstrap";
 
 // Devise //
@@ -10,6 +10,9 @@
   background-color: #52B3D9;
   height: 500px;
   margin: 30px;
+}
+.center2{
+  min-height: 600px;
 }
 // Welcome Index //
 .section1{
@@ -75,4 +78,29 @@
 
 .section1{
   text-align: center;
+}
+
+
+//charges page
+
+.center3{
+  padding: 30px;
+  background-color: #52B3D9;
+  height: 500px;
+  margin: 30px;
+  text-align:center;
+}
+
+.center3 h3{
+  font-size: 30pt;
+}
+
+.center3 h5{
+  font-size: 20pt;
+  text-decoration: underline;
+}
+
+.center3 ul{
+  list-style-type: none;
+  font-size:16pt;
 }
