@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require epiceditor
 //= require_tree .
 
 $('body').scrollspy({

@@ -16,13 +16,11 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "About", about_path %></li>
         <li><%= link_to "Wikis", wikis_path %></li>
+        <% if current_user && current_user.role == 'standard' %>
+          <li><%= link_to "Update", new_charge_path %></li>
+        <% end %>
       </ul>
     <div class="navbar-right">
-      <ul class="nav navbar-nav">
-          <% if current_user.role == 'standard' %>
-            <li class="upgrade"><%= link_to "UPGRADE!", new_charge_path %></li>
-          <% end %>
-      </ul>
       <ul class="nav navbar-nav">
         <div class="user-info">
           <% if current_user %>
