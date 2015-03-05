@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :wikis
+  resources :collaborators, only: [:create, :destroy]
 
   get 'users/upgrade'
 

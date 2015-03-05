@@ -1,4 +1,15 @@
-<h1><%= markdown_to_html @wiki.title %></h1>
+<%= link_to wikis_path do%>
+<i class="fa fa-arrow-circle-o-left"></i>
+<% end %>
+<% if policy(@wiki).show? %>
+  <h1><%= markdown_to_html @wiki.title %></h1>
+  <p><%= markdown_to_html @wiki.body %></p>
+  <small>
+    <i>author: <%= @wiki.user.name %></i>
+  </small>
+<% end %>
+<br/>
+<% if policy(@wiki).update? %>
   <%= link_to "Edit", edit_wiki_path(@wiki), class: 'btn btn-success' %>
   <%= link_to "Delete", @wiki, method: :delete, class: 'btn btn-danger' %>
-<p><%= markdown_to_html @wiki.body %></p>
+<% end %>

@@ -1,3 +1,9 @@
+<%= link_to @wiki do %>
+  <i class="fa fa-arrow-circle-o-left"></i>
+<% end %>
+
+<h1>Edit Wiki</h1>
+
 <div class="col-md-6 col-md-offset-3">
   <%= simple_form_for @wiki do |f| %>
     <div class="form-inputs">
@@ -10,7 +16,13 @@
     </div>
   <% end %>
     <div class="form-actions">
-      <%= f.button :submit, "Publish Wiki", class: 'btn btn-success' %>
+      <%= f.button :submit, "Update Wiki", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+
+  <% if current_user.role == "premium" %>
+    <div class="form-group">
+      <%= render partial: 'collaborators/collaborators', locals: { wiki: @wiki, user: current_user } %>
     </div>
   <% end %>
 </div>

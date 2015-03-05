@@ -12,7 +12,6 @@ class CollaboratorsController < ApplicationController
       redirect_to edit_wiki_path(@wiki)
     else
       collaborator = @wiki.collaborators.build(user_id: @user.id)
-
       if collaborator.save
         flash[:notice] = "Your collaborator has been added to the wiki."
         redirect_to edit_wiki_path(@wiki)
@@ -21,9 +20,9 @@ class CollaboratorsController < ApplicationController
         redirect_to edit_wiki_path(@wiki)
       end
     end
-   end
+  end
 
-   def destroy
+  def destroy
     @collaborator = Collaborator.find(params[:id])
     @wiki = @collaborator.wiki
 

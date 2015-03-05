@@ -1,11 +1,13 @@
 class WikisController < ApplicationController
 
   def index
-    @wikis = Wiki.visible_to(current_user).paginate(page: params[:page], per_page: 10)
+    @wikis =  policy_scope(Wiki.all.paginate(page: params[:page], per_page: 10))
+
   end
 
   def show
     @wiki = Wiki.find(params[:id])
+    authorize @wiki
   end
 
   def new
@@ -34,7 +36,7 @@ class WikisController < ApplicationController
 
     if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki has been updated."
-      redirect_to edit_wiki_path(@wiki)
+      redirect_to wiki_path(@wiki)
     else
       flash[:error] = "There was an error updating the wiki. Please try again."
       render :edit
@@ -44,6 +46,7 @@ class WikisController < ApplicationController
   def destroy
     @wiki = Wiki.find(params[:id])
     title = @wiki.title
+    authorize @wiki
 
     if @wiki.destroy
       flash[:notice] = "\"#{title}\" was deleted successfully."

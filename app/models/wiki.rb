@@ -3,6 +3,9 @@ class Wiki < ActiveRecord::Base
   has_many :users, through: :collaborators
   belongs_to :user
 
+  validates :title, presence: true
+  validates :body, presence: true
+
   scope :visible_to, -> (user) do
     if user.admin? || user.premium?
       all

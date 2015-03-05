@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError do |exception|
     flash[:error] = "You are not authoried to make this changes to the wiki."
-    redirect_to wiki_path
+    redirect_to root_path
   end
 
   protected
