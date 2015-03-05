@@ -3,12 +3,11 @@ class Wiki < ActiveRecord::Base
   has_many :users, through: :collaborators
   belongs_to :user
 
-
   scope :visible_to, -> (user) do
     if user.admin? || user.premium?
       all
     else
-      where(private: false)
+      where(private: nil)
     end
   end
 end

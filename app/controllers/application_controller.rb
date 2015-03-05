@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError do |exception|
-    flash[:error] = "You must sign in to make changes to the wiki."
-    redirect_to root_url
+    flash[:error] = "You are not authoried to make this changes to the wiki."
+    redirect_to wiki_path
   end
 
   protected

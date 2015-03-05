@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    user.present?
   end
 
   def new?
@@ -31,11 +31,12 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    update?
   end
 
   def scope
     Pundit.policy_scope!(user, record.class)
+    # record.class - will return the class of the record being authorized
   end
 
   class Scope
@@ -51,4 +52,3 @@ class ApplicationPolicy
     end
   end
 end
-

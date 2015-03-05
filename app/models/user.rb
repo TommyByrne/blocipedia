@@ -6,7 +6,11 @@ class User < ActiveRecord::Base
   validates_presence_of :name, :email
   validates :email, format: /\b[a-zA-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}\b/
 
+  has_many :collaborators
+  has_many :collaborations, through: :collaborators, source: :wiki
   has_many :wikis
+
+
   after_initialize :init
 
   def admin?
