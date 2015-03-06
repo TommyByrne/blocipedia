@@ -1,5 +1,10 @@
+<div class="display">
+  <h2>Add Collaborators</h2>
+</div>
+
 <div class="space">
   <% if @wiki.user == current_user %>
+
     <%= simple_form_for collaborators_path, method: :post do %>
       <%= text_field_tag :email %>
       <%= hidden_field_tag :wiki_id, @wiki.id %>

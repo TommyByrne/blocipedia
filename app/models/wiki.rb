@@ -5,7 +5,7 @@ class Wiki < ActiveRecord::Base
 
   validates :title, presence: true
   validates :body, presence: true
-
+  default_scope {order('Title ASC')}
   scope :visible_to, -> (user) do
     if user.admin? || user.premium?
       all
