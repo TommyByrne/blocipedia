@@ -23,8 +23,10 @@
   <% end %>
 
   <% if current_user.role == "premium" %>
-    <div class="form-group">
-      <%= render partial: 'collaborators/collaborators', locals: { wiki: @wiki, user: current_user } %>
-    </div>
+      <%= form_tag search_collaborators_path, method: :get do %>
+      <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+      <%= hidden_field_tag :wiki_id, @wiki.id %>
+      <%= submit_tag "Search", :name => nil %>
+  <% end %>
   <% end %>
 </div>

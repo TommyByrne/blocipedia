@@ -6,23 +6,7 @@ class CollaboratorsController < ApplicationController
   def create
     @wiki = Wiki.find(params[:wiki_id])
     @user = User.where(email: params[:email]).take
-
-    if @user == nil
-      flash[:error] = "Collaborator could not be found."
-      redirect_to edit_wiki_path(@wiki)
-    elsif @wiki.users.include?(@user)
-      flash[:error] = "Collaborator already exists."
-      redirect_to edit_wiki_path(@wiki)
-    else
-      collaborator = @wiki.collaborators.build(user_id: @user.id)
-      if collaborator.save
-        flash[:notice] = "Your collaborator has been added to the wiki."
-        redirect_to edit_wiki_path(@wiki)
-      else
-        flash[:error] = "Collaborator could not be added. Check spelling!"
-        redirect_to edit_wiki_path(@wiki)
-      end
-    end
+    collaborator = @wiki.collaborators.build(user_id: @user.id)
   end
 
   def destroy
@@ -36,5 +20,10 @@ class CollaboratorsController < ApplicationController
       flash[:error] = "Collaborator could not be removed."
       redirect_to edit_wiki_path(@wiki)
     end
+  end
+
+  def search
+    raise
+    @users = User.search(params[:search])
   end
 end

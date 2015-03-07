@@ -13,6 +13,11 @@ class User < ActiveRecord::Base
 
   after_initialize :init
 
+  def self.search(search)
+    search_condition = "%" + search + "%"
+    where('name LIKE ? OR email LIKE ?', search_condition, search_condition)
+  end
+
   def admin?
     role == 'admin'
   end
@@ -59,4 +64,6 @@ class User < ActiveRecord::Base
     flash[:notice] = "User switched from premium to standard."
     redirect_to edit_user_registration_path
   end
+
+
 end
