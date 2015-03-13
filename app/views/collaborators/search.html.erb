@@ -1,0 +1,22 @@
+<div class="container">
+  <table>
+    <caption><h1>Collaborators</h1></caption>
+      <tr>
+        <th>User</th>
+        <th>Email</th>
+        <th>Add</th>
+      </tr>
+        <% @users.each do |user| %>
+      <tr>
+        <td class="left"><h3><%=user.name %></h3></td>
+        <td class="middle"><h3><%=user.email %></h3></td>
+        <%= form_tag collaborators_path, method: :post do %>
+          <%= hidden_field_tag :wiki_id, @wiki_id %>
+          <%= hidden_field_tag :user_id, user.id %>
+        <td class="right-side"><%= submit_tag "Add Collaborator",class: "btn btn-success"%></td>
+
+         <% end %>
+      </tr>
+        <% end %>
+  </table>
+</div>

@@ -5,8 +5,11 @@ class CollaboratorsController < ApplicationController
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.where(email: params[:email]).take
-    collaborator = @wiki.collaborators.build(user_id: @user.id)
+    @user = User.find(params[:user_id])
+    collaborator = @wiki.collaborators.build(user: @user)
+
+    collaborator.save
+    redirect_to edit_wiki_path(@wiki)
   end
 
   def destroy
@@ -23,7 +26,7 @@ class CollaboratorsController < ApplicationController
   end
 
   def search
-    raise
     @users = User.search(params[:search])
+    @wiki_id = params[:wiki_id]
   end
 end
