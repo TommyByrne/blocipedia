@@ -1,0 +1,16 @@
+<%= form_tag search_collaborators_path, method: :get do %>
+  <%= text_field_tag :search, params[:search], :id => 'search_field' %>
+  <%= hidden_field_tag :wiki_id, @wiki.id %>
+  <%= submit_tag "Search", :name => nil, class: "btn btn-success" %>
+<% end %>
+<div class="row">
+  <h2>Wiki Collaborators</h2>
+    <% @wiki.collaborators.each do |collaborator| %>
+      <p class="lead">
+        <%= collaborator.user.name %>
+        <% if @wiki.user == current_user %>
+          <%= link_to "", [collaborator], method: :delete, class: 'glyphicon glyphicon-trash' %>
+        <% end %>
+      </p>
+    <% end %>
+</div>

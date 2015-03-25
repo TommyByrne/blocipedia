@@ -2,6 +2,9 @@
   <div class="display">
     <h1><%= @user.name %>'s Wikis</h1>
   </div>
+  <div class="new-tab">
+    <%= link_to "New Wiki", new_wiki_path(@wiki), class: 'btn btn-success' %>
+  </div>
   <div class="my-wiki">
     <% @wikis.each do |wiki| %>
       <div class="media">
@@ -11,6 +14,23 @@
             <div class="right">
               <%= link_to "Edit", edit_wiki_path(wiki), class: 'btn btn-success' %>
               <%= link_to "Delete", wiki, method: :delete, class: 'btn btn-danger' %>
+            </div>
+          </h4>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class="co-wiki">
+    <h2>Collaborator Wiki</h2>
+    <% @collaborators.each do |collaborator| %>
+      <div class="media">
+        <div class="media-body">
+          <h4 class="media-headings">
+            <%# if collaborator.user_id == current_user.id %>
+              <%= link_to collaborator.wiki.title %>
+            <%# end %>
+            <div class="right">
+              <%#= link_to "Edit", edit_wiki_path(wiki), class: 'btn btn-success' %>
             </div>
           </h4>
         </div>

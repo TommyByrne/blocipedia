@@ -5,10 +5,9 @@ class CollaboratorsController < ApplicationController
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find(params[:user_id])
-    collaborator = @wiki.collaborators.build(user: @user)
+    @collaborator = Collaborator.new(wiki_id: @wiki.id, user_id: params[:user_id])
 
-    collaborator.save
+    @collaborator.save
     redirect_to edit_wiki_path(@wiki)
   end
 

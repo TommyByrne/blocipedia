@@ -8,7 +8,7 @@
       <div class="form-inputs">
         <%= f.input :title, label: "Title", required: true, autofocus: true %>
         <%= f.input :body, label: "Wiki Body", required: true %>
-          <% if current_user && current_user.role == 'admin' || 'premium' %>
+          <% if current_user.role == 'premium' %>
             <%= f.label :private, class: 'checkbox' do %>
             <%= f.check_box :private %> Private wiki
           <% end %>
@@ -17,6 +17,9 @@
       <div class="form-actions">
         <%= f.button :submit, "Publish Wiki", class: 'btn btn-success' %>
       </div>
+    <% end %>
+    <% if current_user.role == "premium" %>
+      <%= render partial: "search", locals: { wiki: @wiki } %>
     <% end %>
   </div>
 </div>

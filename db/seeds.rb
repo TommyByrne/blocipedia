@@ -14,7 +14,25 @@ end
 user = User.new(
   name:     "Gary Thomas",
   email:    "person@example.com",
+  password: "password",
+  role:     "premium"
+  )
+  user.skip_confirmation!
+  user.save!
+
+user = User.new(
+  name:     "Mike Thorp",
+  email:    "example@example.com",
   password: "password"
+  )
+  user.skip_confirmation!
+  user.save!
+
+user = User.new(
+  name:      "Admin",
+  email:     "admin@example.com",
+  password:  "testing1",
+  role:      "admin"
   )
   user.skip_confirmation!
   user.save!
